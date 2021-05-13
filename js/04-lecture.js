@@ -140,37 +140,37 @@
  Сбор статистики симулируется логированием строки. Разберись 
  и дополни код так, чтобы он работал верно.*/
 //  ---------------------------------------------------------
-const service = {
-  mailingList: ['mango@mail.com', 'poly@hotmail.de', 'ajax@jmail.net'],
-  subscribe(email) {
-    this.mailingList.push(email);
-    return `Почта ${email} добавлена в рассылку.`;
-  },
-  unsubscribe(email) {
-    this.mailingList = this.mailingList.filter((e) => e !== email);
-    return `Почта ${email} удалена из рассылки.`;
-  },
-};
+// const service = {
+//   mailingList: ['mango@mail.com', 'poly@hotmail.de', 'ajax@jmail.net'],
+//   subscribe(email) {
+//     this.mailingList.push(email);
+//     return `Почта ${email} добавлена в рассылку.`;
+//   },
+//   unsubscribe(email) {
+//     this.mailingList = this.mailingList.filter((e) => e !== email);
+//     return `Почта ${email} удалена из рассылки.`;
+//   },
+// };
 
-function logAndInvokeAction(email, action) {
-  console.log(`Выполняем действие с ${email}.`);
-  return action(email);
-}
+// function logAndInvokeAction(email, action) {
+//   console.log(`Выполняем действие с ${email}.`);
+//   return action(email);
+// }
 
-const firstInvoke = logAndInvokeAction('kiwi@mail.uk', service.subscribe.bind(service));
-console.log(firstInvoke);
-// Почта kiwi@mail.uk добавлена в рассылку.
+// const firstInvoke = logAndInvokeAction('kiwi@mail.uk', service.subscribe.bind(service));
+// console.log(firstInvoke);
+// // Почта kiwi@mail.uk добавлена в рассылку.
 
-console.log(service.mailingList);
+// console.log(service.mailingList);
 /* ['mango@mail.com', 
     'poly@hotmail.de', 
     'ajax@jmail.net', 
     'kiwi@mail.uk']*/
-const secondInvoke = logAndInvokeAction('poly@hotmail.de', service.unsubscribe.bind(service));
-console.log(secondInvoke);
+// const secondInvoke = logAndInvokeAction('poly@hotmail.de', service.unsubscribe.bind(service));
+// console.log(secondInvoke);
 // Почта poly@hotmail.de удалена из рассылки.
 
-console.log(service.mailingList); // ['mango@mail.com', 'ajax@jmail.net', 'kiwi@mail.uk']
+// console.log(service.mailingList); // ['mango@mail.com', 'ajax@jmail.net', 'kiwi@mail.uk']
 // ============================================================
 
 /*С помощью Function Declaration напиши функцию-конструктор
@@ -193,8 +193,142 @@ removeItem(item) - принимает товар item и удаляет его �
 проверять тесты. Пожалуйста ничего там не меняй. */
 // ----------------------------------------------------------
 
-function Storage(items) {
-
-
-  
+/*function Storage (items) {
+   
+  this.items = items;  
 }
+
+  Storage.prototype.getItems = function() {
+    return this.items;
+    }
+      
+  Storage.prototype.addItem = function (newItem) {
+    return this.items.push(newItem);
+  }
+
+  Storage.prototype.removeItem = function (item) {
+    
+    var index = this.items.indexOf(item);
+  if (index > -1) {
+    this.items.splice(index, 1);
+  }
+  return this.items;
+  }
+*/
+
+
+// ----------------test---------------------------
+
+// Storage.prototype.hasOwnProperty('getItems')
+// возвращает true
+// Storage.prototype.hasOwnProperty('addItem')
+// возвращает true
+// Storage.prototype.hasOwnProperty('removeItem')
+// возвращает true
+// Storage.prototype.isPrototypeOf(storage)
+// возвращает true
+// У объекта storage есть свойство items
+
+// const storage = new Storage(['Нанитоиды', 'Пролонгер', 'Антигравитатор']);
+// console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+// storage.addItem('Дроид');
+// console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+// storage.removeItem('Пролонгер');
+// console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
+// =============================================================
+// function StringBuilder(baseValue){
+// 	this.value = baseValue;
+// }
+// StringBuilder.prototype.getValue = function() {
+//     return this.value;
+//     }
+// StringBuilder.prototype.padEnd = function(str) {
+//     return this.value = `${this.value}${str}`;
+//     }
+// StringBuilder.prototype.padStart = function(str) {
+//     return this.value = `${str}${this.value}`;
+//     }
+// StringBuilder.prototype.padBoth = function(str) {
+//     return this.value = `${str}${this.value}${str}`;
+//     }
+
+// // Пиши код выше этой строки
+// const builder = new StringBuilder('.');
+// console.log(builder.getValue()); // '.'
+// builder.padStart('^');
+// console.log(builder.getValue()); // '^.'
+// builder.padEnd('^');
+// console.log(builder.getValue()); // '^.^'
+// builder.padBoth('=');
+// console.log(builder.getValue()); // '=^.^='
+// ======================================================
+
+// class Storage {
+//   #items;
+//   constructor(items) {
+//     this.#items = items;
+//   }
+
+
+//   getItems() {
+//     return this.#items;
+//   }
+
+//   addItem(newItem) {
+//     this.#items.push(newItem);
+//   };
+
+//   removeItem(item) {
+//     const itemIndex = this.#items.indexOf(item);
+//     this.#items.splice(itemIndex, 1);
+//   };
+// }
+// // Пиши код выше этой строки
+// const storage = new Storage(["Нанитоиды", "Пролонгер", "Антигравитатор"]);
+// console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+// storage.addItem("Дроид");
+// console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+// storage.removeItem("Пролонгер");
+// console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
+// console.log(Storage.prototype.hasOwnProperty('getItems'))
+// ============================================================
+
+// class User {
+//   email;
+
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+// // Пиши код ниже этой строки
+// class Admin extends User {
+  
+//   static AccessLevel = { BASIC: 'basic', SUPERUSER: 'superuser' }
+// }
+
+// console.log(Admin.AccessLevel.BASIC)
+// ========================================================
+
+function calculateTotalPrice(orderedItems) {
+  let totalPrice = 0;
+  // Пиши код ниже этой строки
+
+  orderedItems.forEach(function(orderedItem) {
+    totalPrice += orderedItem;
+  });
+
+  // Пиши код выше этой строки
+  return totalPrice;
+}
+
+console.log(calculateTotalPrice([12, 85, 37, 4]));//138
+console.log(calculateTotalPrice([164, 48, 291]));//503
+console.log(calculateTotalPrice([412, 371, 94, 63, 176]));//1116
